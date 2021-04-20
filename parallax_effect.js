@@ -43,7 +43,7 @@ var layers;
                     var sorted = $(currentPageParallaxObjects).sort(sortByZIndex);
                     for(let i = 0; i < sorted.length; i++){ 
                         sorted[i].setAttribute("data-speed", dataSpeedVariable[i]);
-                        if(parallaxDelay != undefined){
+                        if(parallaxDelay != ""){
                             let delay = 'transform ' + parallaxDelay + 'ms ease';
                             sorted[i].style.setProperty("transition", delay);
                         }
@@ -61,7 +61,7 @@ function para(layers) {
     let maxScroll = parseInt(anchors[(anchors.length)-1].style.top, 10);
     let layer, speed, yPos;
 
-    if(minMaxScroll != undefined){
+    if(minMaxScroll != ""){
         let rangeOfScroll = minMaxScroll.split(" ");
         minScroll = rangeOfScroll[0];
         maxScroll = rangeOfScroll[1];
