@@ -23,6 +23,7 @@ var parallaxAnchors;
 
                 experience.on(CerosSDK.EVENTS.PAGE_CHANGED, pageChangedCallback);
                 function pageChangedCallback(){
+                    console.log("works_00");
                     var pageContainer = document.querySelector(".page-viewport.top > .page-container");
                     //making new array of parallaxObjects that are on current page 
                     currentPageParallaxObjects = parallaxObjects.filter(($object) =>{
@@ -32,13 +33,15 @@ var parallaxAnchors;
                         }
                     });
 
+                    console.log("works_01");
                     var pageScroll = $(pageContainer).children().first();
                     parallaxAnchors = $(pageScroll).find(".scranchor").toArray();
 
+                    console.log("works_02");
                     var sortByZIndex = function(a, b){
                         return b.style.zIndex - a.style.zIndex;
                     }
-                    console.log("works");
+                    console.log("works_03");
                     var sorted = $(currentPageParallaxObjects).sort(sortByZIndex);
                     for(let i = 0; i < sorted.length; i++){
                         console.log("arr");
