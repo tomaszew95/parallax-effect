@@ -65,8 +65,13 @@ var para = ($this, layers, pageH) =>{
 
     if(minMaxScroll != ""){
         let rangeOfScroll = minMaxScroll.split(" ");
-        minScroll = parseInt(rangeOfScroll[0], 10);
-        maxScroll = parseInt(rangeOfScroll[1], 10);
+        if(rangeOfScroll.length >=2){
+            minScroll = parseInt(rangeOfScroll[0], 10);
+            maxScroll = parseInt(rangeOfScroll[1], 10);
+        }
+        else{
+            maxScroll = parseInt(rangeOfScroll, 10);
+        }
     }
         
     for (let i = 0; i < layers.length; i++) {
