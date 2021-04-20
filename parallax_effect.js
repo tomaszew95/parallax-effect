@@ -51,8 +51,7 @@ var parallaxAnchors;
                             sorted[i].style.setProperty("transition", delay);
                         }
                     }
-
-                    pageContainer.addEventListener("scroll", function(){requestAnimationFrame(para(sorted))});
+                    pageContainer.addEventListener("scroll", function(){para(sorted)});
                 }
             })
     });
