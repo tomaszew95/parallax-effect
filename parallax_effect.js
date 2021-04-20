@@ -3,9 +3,7 @@ var parallaxEffect = document.getElementById("ceros-parallax-effect-plugin");
 var dataSpeedVariable = parallaxEffect.getAttribute("data-speed-variable").split(" ");
 var minMaxScroll = parallaxEffect.getAttribute("min-max-scroll");
 var parallaxDelay = parallaxEffect.getAttribute("parallax-delay");
-// var pageContainer =  window.parent.document.getElementsByClassName("page-container");
 var parallaxAnchors;
-var layers;
 
 (function(){
     'use strict';
@@ -40,8 +38,10 @@ var layers;
                     var sortByZIndex = function(a, b){
                         return b.style.zIndex - a.style.zIndex;
                     }
+                    console.log("works");
                     var sorted = $(currentPageParallaxObjects).sort(sortByZIndex);
-                    for(let i = 0; i < sorted.length; i++){ 
+                    for(let i = 0; i < sorted.length; i++){
+                        console.log("arr");
                         sorted[i].setAttribute("data-speed", dataSpeedVariable[i]);
                         if(parallaxDelay != ""){
                             let delay = 'transform ' + parallaxDelay + 'ms ease';
@@ -56,6 +56,7 @@ var layers;
 })();
 
 function para(layers) {
+    console.log("para");
     let top = this.scrollTop;
     let minScroll = parseInt(anchors[0].style.top, 10);
     let maxScroll = parseInt(anchors[(anchors.length)-1].style.top, 10);
