@@ -26,7 +26,7 @@ var parallaxAnchors;
                     console.log("works_00");
                     var pageContainer = document.querySelector(".page-viewport.top > .page-container");
                     //making new array of parallaxObjects that are on current page 
-                    currentPageParallaxObjects = parallaxObjects.filter(($object) =>{
+                    var currentPageParallaxObjects = parallaxObjects.filter(($object) =>{
                         let $obj = document.getElementById($object.id);
                         if(pageContainer.contains($obj)){
                             return $object;
