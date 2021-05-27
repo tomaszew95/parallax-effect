@@ -51,7 +51,7 @@ var parallaxDelay = parallaxEffect.getAttribute("parallax-delay");
                             sorted[i].style.setProperty("transition", delay);
                         }
                     }
-                    pageContainer.addEventListener("scroll", function(){requestAnimationFrame(para(this, sorted, pageHeight))});
+                    pageContainer.addEventListener("scroll", function(){para(this, sorted, pageHeight)});
                 }
             })
     });
