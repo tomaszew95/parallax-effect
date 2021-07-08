@@ -64,7 +64,7 @@ var parallaxTiming = parallaxEffect.getAttribute("parallax-timing").split(" ");
                             scrollPos.maxScroll = parseInt(rangeOfScroll[1], 10);
                         }
                         else{
-                            scrollPos.maxScroll = parseInt(rangeOfScroll, 10);
+                            scrollPos.maxScroll = parseInt(rangeOfScroll[0], 10);
                         }
                     }
 
