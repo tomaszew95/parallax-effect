@@ -51,35 +51,36 @@ var parallaxDelay = parallaxEffect.getAttribute("parallax-delay");
                             sorted[i].style.setProperty("transition", delay);
                         }
                     }
-                    pageContainer.addEventListener("scroll", function(){para(this, sorted, pageHeight)});
+                    //adding scroll starting and ending position
+                    let minScroll = 0;
+                    let maxScroll = pageHeight;
+                    if(minMaxScroll != ""){
+                        let rangeOfScroll = minMaxScroll.split(" ");
+                        if(rangeOfScroll.length >=2){
+                            minScroll = parseInt(rangeOfScroll[0], 10);
+                            maxScroll = parseInt(rangeOfScroll[1], 10);
+                        }
+                        else{
+                            maxScroll = parseInt(rangeOfScroll, 10);
+                        }
+                    }
+
+                    pageContainer.addEventListener("scroll", function(){para(this, sorted)});
                 }
             })
     });
 })();
 
-var para = ($this, layers, pageH) =>{
+var para = ($this, layers) =>{
     let top = $this.scrollTop;
-    let minScroll = 0;
-    let maxScroll = pageH;
     let layer, speed, yPos;
-
-    if(minMaxScroll != ""){
-        let rangeOfScroll = minMaxScroll.split(" ");
-        if(rangeOfScroll.length >=2){
-            minScroll = parseInt(rangeOfScroll[0], 10);
-            maxScroll = parseInt(rangeOfScroll[1], 10);
-        }
-        else{
-            maxScroll = parseInt(rangeOfScroll, 10);
-        }
-    }
         
     for (let i = 0; i < layers.length; i++) {
         layer = layers[i];
         speed = layer.getAttribute('data-speed');
         yPos = (top * speed / 100);
         let newPos = yPos-minScroll;
-        console.log(newPos);
+        console.log(yPos, minScroll);
         if(top >= minScroll && top <= maxScroll){
             layer.style.transform = 'translate3d(0px, ' + newPos + 'px, 0px)';
         }
