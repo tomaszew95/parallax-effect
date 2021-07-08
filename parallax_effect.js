@@ -1,7 +1,7 @@
 var parallaxEffect = document.getElementById("ceros-parallax-effect-plugin");
 var dataSpeedVariable = parallaxEffect.getAttribute("data-speed-variable").split(" ");
 var minMaxScroll = parallaxEffect.getAttribute("min-max-scroll");
-var parallaxDelay = parallaxEffect.getAttribute("parallax-delay");
+var parallaxTiming = parallaxEffect.getAttribute("parallax-timing").split(" ");
 (function(){
     'use strict';
     require.config({
@@ -46,8 +46,9 @@ var parallaxDelay = parallaxEffect.getAttribute("parallax-delay");
                     //adding delay
                     for(let i = 0; i < sorted.length; i++){
                         sorted[i].setAttribute("data-speed", dataSpeedVariable[i]);
-                        if(parallaxDelay != ""){
-                            let delay = 'transform ' + parallaxDelay + 'ms ease';
+                        if(parallaxTiming != ""){
+                            let easing = (1<parallaxTiming.length) ? parallaxTiming[1]:'ease';
+                            let delay = 'transform ' + parallaxTiming[0] + 'ms ' + easing;
                             sorted[i].style.setProperty("transition", delay);
                         }
                     }
