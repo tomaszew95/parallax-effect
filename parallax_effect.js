@@ -52,26 +52,28 @@ var parallaxDelay = parallaxEffect.getAttribute("parallax-delay");
                         }
                     }
                     //adding scroll starting and ending position
-                    let minScroll = 0;
-                    let maxScroll = pageHeight;
+                    let scrollPos = {
+                        minScroll: 0,
+                        maxScroll: pageHeight
+                    }
                     if(minMaxScroll != ""){
                         let rangeOfScroll = minMaxScroll.split(" ");
                         if(rangeOfScroll.length >=2){
-                            minScroll = parseInt(rangeOfScroll[0], 10);
-                            maxScroll = parseInt(rangeOfScroll[1], 10);
+                            scrollPos.minScroll = parseInt(rangeOfScroll[0], 10);
+                            scrollPos.maxScroll = parseInt(rangeOfScroll[1], 10);
                         }
                         else{
-                            maxScroll = parseInt(rangeOfScroll, 10);
+                            scrollPos.maxScroll = parseInt(rangeOfScroll, 10);
                         }
                     }
 
-                    pageContainer.addEventListener("scroll", function(){para(this, sorted)});
+                    pageContainer.addEventListener("scroll", function(){para(this, sorted, scrollPos)});
                 }
             })
     });
 })();
 
-var para = ($this, layers) =>{
+var para = ($this, layers, scrollPos) =>{
     let top = $this.scrollTop;
     let layer, speed, yPos;
         
@@ -79,9 +81,9 @@ var para = ($this, layers) =>{
         layer = layers[i];
         speed = layer.getAttribute('data-speed');
         yPos = (top * speed / 100);
-        let newPos = yPos-minScroll;
-        console.log(yPos, minScroll);
-        if(top >= minScroll && top <= maxScroll){
+        let newPos = yPos-scrollPos.minScroll;
+        console.log(yPos, scrollPos.minScroll);
+        if(top >= scrollPos.minScroll && top <= scrollPos.maxScroll){
             layer.style.transform = 'translate3d(0px, ' + newPos + 'px, 0px)';
         }
     }
