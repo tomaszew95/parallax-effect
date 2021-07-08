@@ -79,7 +79,7 @@ var para = ($this, layers, pageH) =>{
         speed = layer.getAttribute('data-speed');
         yPos = (top * speed / 100);
         if(top >= minScroll && top <= maxScroll){
-            layer.style.transform = 'translate3d(0px, ' + yPos + 'px, 0px)';
+            layer.style.transform = 'translate3d(0px, ' + (yPos-minScroll) + 'px, 0px)';
         }
     }
-};
+}
