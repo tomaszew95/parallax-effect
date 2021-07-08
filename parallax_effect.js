@@ -80,11 +80,9 @@ var para = ($this, layers, scrollPos) =>{
     for (let i = 0; i < layers.length; i++) {
         layer = layers[i];
         speed = layer.getAttribute('data-speed');
-        yPos = (top * speed / 100);
-        let newPos = yPos-scrollPos.minScroll;
-        console.log(yPos, scrollPos.minScroll);
+        yPos = ((top-scrollPos.minScroll) * speed/100);
         if(top >= scrollPos.minScroll && top <= scrollPos.maxScroll){
-            layer.style.transform = 'translate3d(0px, ' + newPos + 'px, 0px)';
+            layer.style.transform = 'translate3d(0px, ' + yPos + 'px, 0px)';
         }
     }
 }
