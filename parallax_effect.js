@@ -85,5 +85,11 @@ var para = ($this, layers, scrollPos) =>{
         if(top >= scrollPos.minScroll && top <= scrollPos.maxScroll){
             layer.style.transform = 'translate3d(0px, ' + yPos + 'px, 0px)';
         }
+        else if(top<scrollPos.minScroll){
+            layer.style.transform = 'translate3d(0px, 0px, 0px)';
+        }
+        else{
+            layer.style.transform = 'translate3d(0px, ' + ((scrollPos.maxScroll-scrollPos.minScroll) * speed/100) + 'px, 0px)';
+        }
     }
 }
